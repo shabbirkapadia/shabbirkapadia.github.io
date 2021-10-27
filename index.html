@@ -4,9 +4,9 @@
     <title>Vega-Lite Bar Chart</title>
     <meta charset="utf-8" />
 
-    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.1"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.18.2"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
     <style media="screen">
       /* Add space between Vega-Embed links  */
@@ -16,27 +16,38 @@
     </style>
   </head>
   <body>
-    <h1>First Visualization</h1>
+    <h1>Template for Embedding Vega-Lite Visualization</h1>
     <!-- Container for the visualization -->
     <div id="vis"></div>
 
     <script>
       // Assign the specification to a local variable vlSpec.
-      var vlSpec = {
-        {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-    "data": {"url": "data/cars.json"},
-    "transform": [{"filter": {"field": "Weight_in_lbs", "lt": 3000}}],
-    "mark": "circle",
-    "encoding": {
-        "x": {"field": "Horsepower", "type": "quantitative"},
-        "y": {"field": "Miles_per_Gallon", "type": "quantitative"}
+      var vlSpec ={
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {"url":"https://jupyterhub.ischool.illinois.edu/jupyter/hub/user-redirect/lab/tree/building_inventory.csv"},
+    "width": 400,
+    "height": 200,
+    "padding": 5,
+    "data": {"url":"building_inventory.csv"},
+    "transform": [
+    {
+      "aggregate": [{
+       "op": "average",
+       "field": "Square Footage",
+       "as": "Square Footage"
+      }],
+      "groupby": ["Congress Dist"]
     }
-}
-      };
-
+  ],
+    "mark" : "bar",
+    "encoding": {
+        "x":{"field":"Congress Dist", "type":"nominal"}, 
+        "y":{"field":"Square Footage", "type":"quantitative"}
+    }
+};
       // Embed the visualization in the container with id `vis`
-      vegaEmbed('#vis', vlSpec);
+      vegaEmbed('#vis', vlSpec).then(result => console.log(result))
+      .catch(console.warn);
     </script>
   </body>
 </html>
