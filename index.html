@@ -9,19 +9,21 @@
       <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
     <style media="screen">
-      /* Add space between Vega-Embed links  */
       .vega-actions a {
         margin-right: 5px;
       }
     </style>
   </head>
   <body>
-    <h1>Template for Embedding Vega-Lite Visualization</h1>
-    <!-- Container for the visualization -->
+    <h1>Total square footage as a function of Congressional District/h1>
+    
     <div id="vis"></div>
+    <div>
+      <button id="render">Render</button>
+      <button id="scale">Scale x10</button>
+    </div>
 
     <script>
-      // Assign the specification to a local variable vlSpec.
       var vlSpec ={
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     //"data": {"url":"https://jupyterhub.ischool.illinois.edu/jupyter/hub/user-redirect/lab/tree/building_inventory.csv"},
@@ -41,14 +43,20 @@
   ],
     "mark" : "bar",
     "encoding": {
-        "x":{"field":"Congress Dist", "type":"nominal"}, 
+        "x":{"field":"Congress Dist", "type":"nominal", }, 
         "y":{"field":"Square Footage", "type":"quantitative"},
         "tooltip": {"field": "Square Footage", "type": "quantitative"}
     }
 };
-      // Embed the visualization in the container with id `vis`
-      vegaEmbed('#vis', vlSpec).then(result => console.log(result))
-      .catch(console.warn);
+
+      document.getElementById('render').addEventListener('click', (event) => {
+      var embed = vegaEmbed('#vis', vlSpec).then(result => console.log(result)).catch(console.warn);});
+
+      document.getElementById('scale').addEventListener('click', (event) => {
+      var cs = embed.view.changeset().modify((d) => (d.b = d.b * 10));
+      embed.view.change("source_0", cs).run();});
+
+
     </script>
   </body>
 </html>
