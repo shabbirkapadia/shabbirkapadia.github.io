@@ -24,8 +24,8 @@
       // Assign the specification to a local variable vlSpec.
       var vlSpec ={
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": {"url":"https://jupyterhub.ischool.illinois.edu/jupyter/hub/user-redirect/lab/tree/building_inventory.csv"},
-    "width": 400,
+    //"data": {"url":"https://jupyterhub.ischool.illinois.edu/jupyter/hub/user-redirect/lab/tree/building_inventory.csv"},
+    "width": 360,
     "height": 200,
     "padding": 5,
     "data": {"url":"building_inventory.csv"},
@@ -42,7 +42,8 @@
     "mark" : "bar",
     "encoding": {
         "x":{"field":"Congress Dist", "type":"nominal"}, 
-        "y":{"field":"Square Footage", "type":"quantitative"}
+        "y":{"field":"Square Footage", "type":"quantitative"},
+        "tooltip": {"field": "Square Footage", "type": "quantitative"}
     }
 };
       // Embed the visualization in the container with id `vis`
