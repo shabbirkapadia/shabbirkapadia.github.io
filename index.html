@@ -17,7 +17,6 @@
   <body>
     <h1 style="text-align:center;">Assignment 3</h1>
     <h2 style="text-align:center;">Interactive Visualization Using Vega-Lite</h2>
-    <h3 style="color:teal;">Relationship between the Year Acquired and the Year Constructed</h3>
     
     <div id="vis"></div>
     <div>
@@ -25,12 +24,16 @@
     </div>
 
     <script>
-      var vlSpec = {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      var vlSpec = {"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": 720,
     "height": 540,
     "padding": 10,
     "data": {"url":"building_inventory.csv"},
+"hconcat": [
+
+
+  {
+    "title": {"text": "Relationship between the Year Acquired and the Year Constructed"},
     "mark": {"type": "point", "tooltip": {"content": "data"}, "color" : "teal", "dx": 10,"align": "left", "baseline": "middle"},
     "transform": [
         {"filter": {"field": "Year Acquired", "gt": 0}},
@@ -48,7 +51,27 @@
                 "scale": {"domain": [1750, 2020]}
             }
     }
-};
+},
+{
+   "title": {"text": "Total Square Footage as a function of Congressional District"},
+    "transform": [
+    {
+      "filter": {"field": "Congress Dist", "gt": "0"},
+      "aggregate": [{
+       "op": "average",
+       "field": "Square Footage",
+       "as": "Square Footage"
+      }],
+      "groupby": ["Congress Dist"]
+    }
+  ],
+    "mark": {"type": "bar", "tooltip": {"content": "data"}, "color" : "red"},
+    "encoding": {
+        "x":{"field":"Congress Dist", "type":"nominal", "scale": {"domain": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]}}, 
+        "y":{"field":"Square Footage", "type":"quantitative"}
+    }
+}
+]};
       document.getElementById('render').addEventListener('click', (event) => {
       var embed = vegaEmbed('#vis', vlSpec).then(result => console.log(result)).catch(console.warn);});
 
