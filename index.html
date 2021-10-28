@@ -16,7 +16,7 @@
   </head>
   <body>
     <h1 style="text-align:center;">Assignment 3</h1>
-    <h2 style="text-align:center;">Interactive Visualization Using Vega-Lite</h2>
+    <h2 style="text-align:center;">Interactive Visualizations Using Vega-Lite</h2>
     
     <div id="vis"></div>
     <div>
@@ -66,7 +66,7 @@
       "groupby": ["Congress Dist"]
     }
   ],
-    "mark": {"type": "bar", "color" : "grey", "tooltip": true},
+    "mark": {"type": "bar", "color" : "grey"},
     "encoding": {
         "x":{"field":"Congress Dist", "type":"nominal", "scale": {"domain": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]}}, 
         "y":{"field":"Square Footage", "type":"quantitative"}
