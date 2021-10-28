@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Vega-Lite Bar Chart</title>
+    <title>Data Viz Assignment 3</title>
     <meta charset="utf-8" />
 
       <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
@@ -30,7 +30,7 @@
     "height": 360,
     "padding": 8,
     "data": {"url":"building_inventory.csv"},
-    "mark": {"type": "circle"},
+    "mark": {"type": "point", "tooltip": true},
     "transform": [
         {"filter": {"field": "Year Acquired", "gt": 0}},
         {"filter": {"field": "Year Constructed", "gt": 0}}
@@ -44,8 +44,7 @@
         "y":{
                 "field":"Year Constructed",
                 "type":"quantitative",
-                "scale": {"domain": [1750, 2020]},
-                "tooltip": {"field": "Year Constructed", "type": "quantitative"}
+                "scale": {"domain": [1750, 2020]}
             }
     }
 };
