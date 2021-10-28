@@ -48,30 +48,6 @@
             }
     }
 };
-     /* {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 540,
-    "height": 360,
-    "padding": 8,
-    "data": {"url":"building_inventory.csv"},
-    "transform": [
-    {
-      "aggregate": [{
-       "op": "average",
-       "field": "Square Footage",
-       "as": "Square Footage"
-      }],
-      "groupby": ["Congress Dist"]
-    }
-  ],
-    "mark" : "bar",
-    "encoding": {
-        "x":{"field":"Congress Dist", "type":"nominal", }, 
-        "y":{"field":"Square Footage", "type":"quantitative"},
-        "tooltip": {"field": "Square Footage", "type": "quantitative"}
-    }
-};*/
-
       document.getElementById('render').addEventListener('click', (event) => {
       var embed = vegaEmbed('#vis', vlSpec).then(result => console.log(result)).catch(console.warn);});
 
