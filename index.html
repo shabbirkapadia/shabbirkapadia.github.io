@@ -24,7 +24,31 @@
     </div>
 
     <script>
-      var vlSpec ={
+      var vlSpec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 400,
+    "height": 200,
+    "padding": 5,
+    "data": {"url":"building_inventory.csv"},
+    "mark": {"type": "circle"},
+    "transform": [
+        {"filter": {"field": "Year Acquired", "gt": 1990}},
+        {"filter": {"field": "Congress Dist", "gt": 0}}
+      ],
+    "encoding": {
+        "x":{
+                "field":"Year Acquired",
+                 "type":"quantitative",
+                 "scale" : {"domain":[1990,2020]}
+            },
+        "y":{
+                "field":"Year Constructed",
+                "type":"quantitative",
+                "scale" : {"domain":[1990,2020]}
+            }
+    }
+};
+     /* {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": 540,
     "height": 360,
@@ -46,7 +70,7 @@
         "y":{"field":"Square Footage", "type":"quantitative"},
         "tooltip": {"field": "Square Footage", "type": "quantitative"}
     }
-};
+};*/
 
       document.getElementById('render').addEventListener('click', (event) => {
       var embed = vegaEmbed('#vis', vlSpec).then(result => console.log(result)).catch(console.warn);});
