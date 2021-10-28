@@ -16,7 +16,7 @@
   </head>
   <body>
     <h1 style="text-align:center;">Assignment 3</h1>
-    <h2 style="text-align:center;">Interactive Visualizations Using Vega-Lite</h2>
+    <h2 style="text-align:center;">Interactive Visualization Using Vega-Lite</h2>
     <h3 style="color:teal;">Relationship between the Year Acquired and the Year Constructed</h3>
     
     <div id="vis"></div>
@@ -31,7 +31,7 @@
     "height": 540,
     "padding": 10,
     "data": {"url":"building_inventory.csv"},
-    "mark": {"type": "point", "tooltip": {"content": "data"}, "color" : "teal"},
+    "mark": {"type": "point", "tooltip": {"content": "data"}, "color" : "teal", "dx": 10},
     "transform": [
         {"filter": {"field": "Year Acquired", "gt": 0}},
         {"filter": {"field": "Year Constructed", "gt": 0}}
