@@ -25,16 +25,14 @@
 
     <script>
       var vlSpec = {"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 720,
-    "height": 540,
-    "padding": 10,
     "data": {"url":"building_inventory.csv"},
 "hconcat": [
-
-
   {
     "title": {"text": "Relationship between the Year Acquired and the Year Constructed"},
     "mark": {"type": "point", "tooltip": {"content": "data"}, "color" : "teal", "dx": 10,"align": "left", "baseline": "middle"},
+    "width": 400,
+    "height": 200,
+    "padding": 10,
     "transform": [
         {"filter": {"field": "Year Acquired", "gt": 0}},
         {"filter": {"field": "Year Constructed", "gt": 0}}
@@ -54,6 +52,9 @@
 },
 {
    "title": {"text": "Total Square Footage as a function of Congressional District"},
+    "width": 400,
+    "height": 200,
+    "padding": 10,
     "transform": [
     {
       "filter": {"field": "Congress Dist", "gt": "0"},
@@ -65,10 +66,11 @@
       "groupby": ["Congress Dist"]
     }
   ],
-    "mark": {"type": "bar", "tooltip": {"content": "data"}, "color" : "red"},
+    "mark": {"type": "bar", "color" : "red"},
     "encoding": {
         "x":{"field":"Congress Dist", "type":"nominal", "scale": {"domain": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]}}, 
-        "y":{"field":"Square Footage", "type":"quantitative"}
+        "y":{"field":"Square Footage", "type":"quantitative"},
+        "tooltip": {"field": "Square Footage", "type": "quantitative"}
     }
 }
 ]};
