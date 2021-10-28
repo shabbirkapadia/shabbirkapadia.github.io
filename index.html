@@ -66,11 +66,10 @@
       "groupby": ["Congress Dist"]
     }
   ],
-    "mark": {"type": "bar", "color" : "red"},
+    "mark": {"type": "bar", "color" : "grey", "tooltip": true},
     "encoding": {
         "x":{"field":"Congress Dist", "type":"nominal", "scale": {"domain": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]}}, 
-        "y":{"field":"Square Footage", "type":"quantitative"},
-        "tooltip": {"field": "Square Footage", "type": "quantitative"}
+        "y":{"field":"Square Footage", "type":"quantitative"}
     }
 }
 ]};
