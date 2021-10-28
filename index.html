@@ -15,7 +15,7 @@
     </style>
   </head>
   <body>
-    <h1>Total square footage as a function of Congressional District</h1>
+    <h2>Relationship between the year acquired and the year constructed</h2>
     
     <div id="vis"></div>
     <div>
@@ -32,19 +32,20 @@
     "data": {"url":"building_inventory.csv"},
     "mark": {"type": "circle"},
     "transform": [
-        {"filter": {"field": "Year Acquired", "gt": 1990}},
-        {"filter": {"field": "Congress Dist", "gt": 0}}
+        {"filter": {"field": "Year Acquired", "gt": 0}},
+        {"filter": {"field": "Year Constructed", "gt": 0}}
       ],
     "encoding": {
         "x":{
                 "field":"Year Acquired",
                  "type":"quantitative",
-                 "scale" : {"domain":[1990,2020]}
+                 "scale": {"domain": [1750, 2020]}
             },
         "y":{
                 "field":"Year Constructed",
                 "type":"quantitative",
-                "scale" : {"domain":[1990,2020]}
+                "scale": {"domain": [1750, 2020]}
+                "tooltip": {"field": "Year Constructed", "type": "quantitative"}
             }
     }
 };
