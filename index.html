@@ -26,9 +26,9 @@
     <script>
       var vlSpec = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 400,
-    "height": 200,
-    "padding": 5,
+    "width": 540,
+    "height": 360,
+    "padding": 8,
     "data": {"url":"building_inventory.csv"},
     "mark": {"type": "circle"},
     "transform": [
@@ -44,7 +44,8 @@
         "y":{
                 "field":"Year Constructed",
                 "type":"quantitative",
-                "scale": {"domain": [1750, 2020]}
+                "scale": {"domain": [1750, 2020]},
+                "tooltip": {"field": "Year Constructed", "type": "quantitative"}
             }
     }
 };
